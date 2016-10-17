@@ -17,10 +17,16 @@ workflows:
         - is_create_path: true
     - path::./:
         title: Step Test
+        inputs:
+        - gif_words: panda,cat
     - script@1.1.1:
         title: Assert gif url is set
         inputs:
         - content: "[[ $GIF_URL == http://media*.giphy.com/media/* ]]"
+    - script@1.1.1:
+        title: Assert gif contains panda or cat
+        inputs:
+        - content: "[[ $__GIF_GIPHY_URL_CALL__ == *panda* ]] || [[ $__GIF_GIPHY_URL_CALL__ == *cat* ]]"
 
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library

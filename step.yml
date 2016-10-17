@@ -17,3 +17,14 @@ type_tags:
 is_requires_admin_user: false
 is_always_run: true
 is_skippable: true
+inputs:
+  - gif_words: "such wow,awesome,shipit,yes,panda,cat,hell yeah,applaud,lgtm,surprise,suprise motherfucker,yeah bitches,high five,legendary,lil bub"
+    opts:
+      title: "Random Gif words"
+      description: |
+        The step randomly select a gif for one the words you entered.
+
+        You should enter a comma separated list of value.
+        The default is "such wow,awesome,shipit,yes,panda,cat,hell yeah,applaud,lgtm,surprise,suprise motherfucker,yeah bitches,high five,legendary,lil bub"
+      is_expand: false
+      is_required: true

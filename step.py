@@ -3,9 +3,16 @@ import random
 import subprocess
 import urllib2
 import urllib
+import sys
+
+def addEnvironmentVariable(key, value):
+  subprocess.call(['envman', 'add', '--key', key, '--value', value])
 
 def getJson(url, queryParams):
-  response = urllib2.urlopen(url + '?' + urllib.urlencode(queryParams))
+  url = url + '?' + urllib.urlencode(queryParams)
+  addEnvironmentVariable('__GIF_GIPHY_URL_CALL__', url)
+  response = urllib2.urlopen(url)
+
   return json.load(response)
 
 def getGif(gifQuery):
@@ -24,10 +31,7 @@ def getGif(gifQuery):
 
   return data[random.randint(0,len(data) - 1)]['images']['fixed_height']['url']
 
-def addEnvironmentVariable(key, value):
-  subprocess.call(['envman', 'add', '--key', key, '--value', value])
-
-gifName = random.choice(['such wow', 'awesome', 'shipit', 'yes', 'panda', 'cat', 'hell yeah', 'applaud', 'lgtm', 'surprise', 'suprise motherfucker', 'yeah bitches', 'high five', 'legendary', 'lil bub'])
+gifName = random.choice(sys.argv[1].split(','))
 gif = getGif(gifName)
 
 addEnvironmentVariable('GIF_URL', gif)
