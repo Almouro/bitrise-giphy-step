@@ -27,6 +27,14 @@ workflows:
         title: Assert gif contains panda or cat
         inputs:
         - content: "[[ $__GIF_GIPHY_URL_CALL__ == *panda* ]] || [[ $__GIF_GIPHY_URL_CALL__ == *cat* ]]"
+    - path::./:
+        title: Step Test with spaces in word
+        inputs:
+        - gif_words: "awesome panda"
+    - script@1.1.1:
+        title: Assert gif contains "awesome panda"
+        inputs:
+        - content: "[[ $__GIF_GIPHY_URL_CALL__ == *awesome+panda* ]]"
 
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library

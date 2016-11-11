@@ -4,6 +4,7 @@ import subprocess
 import urllib2
 import urllib
 import sys
+import os
 
 def addEnvironmentVariable(key, value):
   subprocess.call(['envman', 'add', '--key', key, '--value', value])
@@ -31,7 +32,7 @@ def getGif(gifQuery):
 
   return data[random.randint(0,len(data) - 1)]['images']['fixed_height']['url']
 
-gifName = random.choice(sys.argv[1].split(','))
+gifName = random.choice(os.environ['gif_words'].split(','))
 gif = getGif(gifName)
 
 addEnvironmentVariable('GIF_URL', gif)
