@@ -28,3 +28,10 @@ inputs:
         The default is "such wow,awesome,shipit,yes,panda,cat,hell yeah,applaud,lgtm,surprise,suprise motherfucker,yeah bitches,high five,legendary,lil bub"
       is_expand: false
       is_required: true
+outputs:
+  - GIF_URL:
+    opts:
+      title: "GIF URL"
+      summary: "Generated GIF (https://giphy.com/) URL."
+      description: "Generated GIF (https://giphy.com/) URL."
+      is_expand: false
