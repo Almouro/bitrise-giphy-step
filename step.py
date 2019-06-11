@@ -25,9 +25,13 @@ def getGif(gifQuery, apiKey):
     'limit': limit,
   }
 
-  data = getJson(baseUrl, queryParams)['data']
-
-  return data[random.randint(0,len(data) - 1)]['images']['fixed_height']['url']
+  try:
+    data = getJson(baseUrl, queryParams)['data']
+    return data[random.randint(0,len(data) - 1)]['images']['fixed_height']['url']
+  except urllib2.HTTPError as error:
+    if error.code == 429:
+      raise Exception('429 status code received, please provide a Giphy API KEY in the step options')
+    raise error
 
 gifName = random.choice(os.environ['gif_words'].split(','))
 apiKey = os.environ['api_key']
