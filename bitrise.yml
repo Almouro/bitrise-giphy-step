@@ -22,7 +22,7 @@ workflows:
     - script@1.1.1:
         title: Assert gif url is set
         inputs:
-        - content: "[[ $GIF_URL == http://media*.giphy.com/media/* ]]"
+        - content: "[[ $GIF_URL == https://media*.giphy.com/media/* ]]"
     - script@1.1.1:
         title: Assert gif contains panda or cat
         inputs:
