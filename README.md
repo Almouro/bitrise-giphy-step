@@ -1,8 +1,6 @@
-# My Awesome Step
+# Gifs with Giphy
 
-My Awesome Step is a solid starting code base for
-a new Step.
-
+Spice up your Bitrise.io logs with a random Gif from Giphy (saved into $GIF_URL)
 
 ## How to use this Step
 

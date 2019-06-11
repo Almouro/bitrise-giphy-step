@@ -16,15 +16,12 @@ def getJson(url, queryParams):
 
   return json.load(response)
 
-def getGif(gifQuery):
-  baseUrl = 'http://api.giphy.com/v1/gifs/search'
+def getGif(gifQuery, apiKey):
+  baseUrl = 'https://api.giphy.com/v1/gifs/search'
   limit = 100
   queryParams = {
     'q': gifQuery,
-    # Public Giphy key
-    # See here for more info: https://github.com/Giphy/GiphyAPI#public-beta-key
-    # Giphy confirmed it is fine to use it in this step context
-    'api_key': 'dc6zaTOxFJmzC',
+    'api_key': apiKey,
     'limit': limit,
   }
 
@@ -33,6 +30,7 @@ def getGif(gifQuery):
   return data[random.randint(0,len(data) - 1)]['images']['fixed_height']['url']
 
 gifName = random.choice(os.environ['gif_words'].split(','))
-gif = getGif(gifName)
+apiKey = os.environ['api_key']
+gif = getGif(gifName, apiKey)
 
 addEnvironmentVariable('GIF_URL', gif)

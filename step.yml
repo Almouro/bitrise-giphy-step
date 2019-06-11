@@ -6,6 +6,8 @@ description: |
   This script will add a `GIF_URL` variable to your build than you can use in the next steps.
   Wanna send a Gif with the Slack step? Simply add `$GIF_URL` somewhere in your Gif message ;)
 
+  You need to provide your own API key.
+
 website: https://github.com/almouro/bitrise-giphy-step
 source_code_url: https://github.com/almouro/bitrise-giphy-step
 support_url: https://github.com/almouro/bitrise-giphy-step/issues
@@ -26,10 +28,20 @@ inputs:
 
         You should enter a comma separated list of value.
         The default is "such wow,awesome,shipit,yes,panda,cat,hell yeah,applaud,lgtm,surprise,suprise motherfucker,yeah bitches,high five,legendary,lil bub"
-      is_expand: false
+      is_expand: true
+      is_required: true
+  - api_key: "dc6zaTOxFJmzC"
+    opts:
+      title: "Giphy API key"
+      description: |
+        Provide app API key.
+
+        You can create your app at https://developers.giphy.com/dashboard/?create=true.
+        The default is dc6zaTOxFJmzC (publicly available API key), but it usually does not work due to reaching the query limit.
+      is_expand: true
       is_required: true
 outputs:
-  - GIF_URL:
+  - GIF_URL: ""
     opts:
       title: "GIF URL"
       summary: "Generated GIF (https://giphy.com/) URL."
